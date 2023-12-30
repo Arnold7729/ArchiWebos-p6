@@ -86,4 +86,19 @@ async function createBtn() {
     });
   });
 }
+
 createBtn();
+
+// Si connecter
+
+const loged = window.sessionStorage.loged;
+const admin = document.querySelector("#portfolio .admin");
+const logout = document.querySelector("header nav ul .loginB");
+
+if (loged == "true") {
+  admin.textContent = "modifier";
+  logout.textContent = "logout";
+  logout.addEventListener ("click" , () =>{
+    window.sessionStorage.loged = false;
+  });
+}

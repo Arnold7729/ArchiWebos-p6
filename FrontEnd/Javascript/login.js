@@ -1,56 +1,19 @@
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     document.getElementById('loginForm').addEventListener('submit', function (event) {
-//         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
-
-//         // Récupérer les valeurs des champs d'entrée
-//         const email = document.getElementById('email').value;
-//         const password = document.getElementById('password').value;
-
-//         // Données à envoyer avec la requête POST
-//         const formData = {
-//             email: email,
-//             password: password
-//         };
-
-//         // Effectuer la requête POST avec Fetch
-//         fetch('http://localhost:5678/api/users/login', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': 'bearer' + token,
-//             },
-//             body: JSON.stringify(formData)
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             // Traiter la réponse de l'API
-//             console.log('Réponse de l\'API:', data);
-//             // test
-            
-//              window.sessionStorage.loged = true;
-//              window.location.href= "index.html";
-//             //test
-//         })
-        
-//         .catch(error => {
-//             // Gérer les erreurs de la requête
-//             alert("Email ou mot de passe incorrect")
-//             console.error('Erreur de la requête:', error);
-//         });
-//     });
-// });
-
-// test 
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('loginForm').addEventListener('submit', function (event) {
+    // Sélectionnez votre formulaire et les éléments nécessaires
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const errorMessage = document.querySelector(".alertP");
+    // const loginButton = document.getElementById('loginButton');
+    // const logoutButton = document.querySelector("#logoutButton");
+
+    // Ajoutez un gestionnaire d'événements de soumission au formulaire
+    loginForm.addEventListener('submit', function (event) {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
         // Récupérer les valeurs des champs d'entrée
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const email = emailInput.value;
+        const password = passwordInput.value;
 
         // Données à envoyer avec la requête POST
         const formData = {
@@ -78,19 +41,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Stocker le token dans le sessionStorage
                 window.sessionStorage.setItem('token', token);
+                window.sessionStorage.loged = true;
 
+            // Mettre à jour le texte du bouton en fonction de la connexion/déconnexion
+        
+            // if (token) {
+            //     // L'utilisateur est connecté
+            //     console.log("Utilisateur connecté");
+            //     loginButton.classList.remove("loginB");
+            // } else {
+            //     // L'utilisateur n'est pas connecté
+            //     console.log("Utilisateur déconnecté");
+            //     logoutButton.classList.remove("logoutB");
+            // }
+            
                 // Rediriger vers la page d'accueil
                 window.location.href = "index.html";
             } else {
                 // Gérer le cas où aucun token n'est retourné
-                alert("Token non disponible dans la réponse de l'API");
+                emailInput.classList.add("mdp");
+                passwordInput.classList.add("mdp");
+                errorMessage.textContent = "Email ou mot de passe incorrect";
             }
         })
         .catch(error => {
             // Gérer les erreurs de la requête
-            alert("Email ou mot de passe incorrect")
+            alert("Email ou mot de passe incorrect");
             console.error('Erreur de la requête:', error);
         });
     });
 });
-
