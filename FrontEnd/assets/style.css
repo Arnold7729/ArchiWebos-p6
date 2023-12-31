@@ -327,11 +327,11 @@ footer p {
 /**** Modal ****/
 
 .containerModals {
-	display: flex;
+	display: none;
 	position: fixed;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-start; /* Aligne le contenu en haut */
+	justify-content: flex-start; 
 	width: 600px;
 	height: 650px;
 	border-radius: 20px;
@@ -344,6 +344,9 @@ footer p {
 	margin-top: 70px;
 	text-align: center;
 
+  }
+  .fa-pen-square{
+	display: none;
   }
   .fa-xmark{
 	position: absolute;
@@ -368,30 +371,33 @@ footer p {
 	height: 380px;
 	border-bottom: 1px solid black;
   }
-  /* <section id="portfolio">
-			<h2>Mes Projets</h2>
-			<a href="#" class="admin">
-				<i class="fas fa-pen-to-square"></i>
-				<div class="filters"></div>
-			</a>
-		<div class="gallery"></div>
-		
-	</section> */
 
-/**** Mes projets + Mofifier ****/
-
-.projetModif {
-	display: flex;
-	text-align: center;
-	justify-content: center;
-}
-
-#portfolio .admin {
-	margin-right: 360px;
-	margin-top: 10px;
+.admin {
+    display: flex;
+	flex-direction: row;
+	gap: 12px;
 	text-decoration: none;
 	color: black;
 }
-#portfolio h2 {
-	margin-right: 50px;
+
+/* Bouton modifier */
+
+.projetModif{
+	display: flex;
+	flex-direction: column;
+	margin-top: 100px;
+}
+.projetModif h2{
+
+}
+.projetModif .modifier {
+	display: none;
+	justify-content: center;
+	flex-direction: row;
+	margin-left: 350px;
+	margin-top: -50px;
+	margin-bottom: 70px;
+	gap: 10px;
+	text-decoration: none;
+	color: black;
 }

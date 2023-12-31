@@ -89,16 +89,11 @@ async function createBtn() {
 
 createBtn();
 
-// Si connecter
+// const icon = document.querySelector(".projetModif .fa-pen-square");
+// const title = document.querySelector(".portfolio h2")
+// const loged = window.sessionStorage.loged;
 
-const loged = window.sessionStorage.loged;
-const admin = document.querySelector("#portfolio .admin");
-const logout = document.querySelector("header nav ul .loginB");
+// if (loged == "false") {
+//   icon.style.display = "none";
+// }
 
-if (loged == "true") {
-  admin.textContent = "modifier";
-  logout.textContent = "logout";
-  logout.addEventListener ("click" , () =>{
-    window.sessionStorage.loged = false;
-  });
-}
