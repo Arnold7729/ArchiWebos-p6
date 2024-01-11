@@ -312,10 +312,6 @@ input {
 
 /*footer*/
 
-footer{
-	
-}
-
 footer p {
 	width: 100%;
 	display: flex;
@@ -324,20 +320,30 @@ footer p {
     height: 10vh;
 }
 
-/**** Modal ****/
+/**** Modal 1****/
 
 .containerModals {
 	display: none;
+	justify-content: center;
+	align-items: center; 
 	position: fixed;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	flex-direction: column;
+	top: 0;
+	right: 0;
+  }
+
+  .containerModals .modalWorks {
+	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-start; 
-	width: 600px;
-	height: 650px;
-	border-radius: 20px;
 	background-color: white;
-	top: 20vh;
-	right: 75vh;
+	width: 40%;
+	height: 90%;
+	border-radius: 10px;
+	position: relative;
   }
   
   .containerModals h2 {
@@ -350,35 +356,66 @@ footer p {
   }
   .fa-xmark{
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 10px;
+	right: 10px;
 	cursor: pointer;
 	font-size: x-large;
   }
-  .containerModals button {
+  .containerModals .ajout {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
 	margin-top: 40px;
+	margin-bottom: 30px;
 	width: 300px;
 	height: 40px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
   }
   .containerModals .ligne {
 	width: 500px;
-	height: 380px;
 	border-bottom: 1px solid black;
+	margin-top: 100px;
   }
-
+  .containerModals .workModal{
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	flex-wrap: wrap;
+	padding-left: 17%;
+	padding-right: 10%;
+}
+.modalWorks img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.workModal figure {
+	display: flex;
+	flex-direction: row;
+	width: 90px;
+	margin-top: 30px;
+	margin-right: 15px;
+	position: relative;
+}
+.workModal .fa-trash-can {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	margin-left: 70px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+  
 .admin {
     display: flex;
 	flex-direction: row;
 	gap: 12px;
 	text-decoration: none;
 	color: black;
-}
+} 
 
 /* Bouton modifier */
 
@@ -387,9 +424,7 @@ footer p {
 	flex-direction: column;
 	margin-top: 100px;
 }
-.projetModif h2{
 
-}
 .projetModif .modifier {
 	display: none;
 	justify-content: center;
@@ -400,4 +435,100 @@ footer p {
 	gap: 10px;
 	text-decoration: none;
 	color: black;
+}
+
+/* modal ajout photo */
+
+.modalAddWork{
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	width: 40%;
+	height: 90%;
+	border-radius: 10px;
+	position: absolute;
+}
+.modalAddWork .fa-arrow-left{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+	font-size: x-large;
+}
+.addPicture {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E8F1F6;
+	border-radius: 5px;
+	padding: 20px;
+	width: 500px;
+	height: 220px;
+}
+.addPicture label{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+.addPicture input{
+	display: flex;
+}
+.fa-image{
+	font-size: 80px;
+	color: lightgray;
+}
+.addPicture .btnAjout {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	background-color: lightgray;
+	color: rgb(37, 106, 129);
+	font-size: medium;
+	font-weight: 400;
+	width: 180px;
+	height: 35px;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+}
+.addPicture p {
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+.contentInput{
+	display: flex;
+	flex-direction: column;
+}
+.contentInput input{
+	width: 100%;
+	position: relative;
+}
+.contentInput #categories {
+	width: 100%;
+	border: none;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1); 
+	padding: 20px;
+	margin-top: 20px;
+}
+.modalAddWork .ajout {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: grey;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	width: 300px;
+	height: 40px;
+	border-radius: 60px ;
+	cursor: pointer;
+	margin-left: 100px;
+}
+.modalAddWork label{
+ margin-top: 20px;
 }

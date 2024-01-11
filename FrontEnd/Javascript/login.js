@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const errorMessage = document.querySelector(".alertP");
-    // const loginButton = document.getElementById('loginButton');
-    // const logoutButton = document.querySelector("#logoutButton");
-
+   
     // Ajoutez un gestionnaire d'événements de soumission au formulaire
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
@@ -41,20 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Stocker le token dans le sessionStorage
                 window.sessionStorage.setItem('token', token);
-                window.sessionStorage.loged = true;
-
-            // Mettre à jour le texte du bouton en fonction de la connexion/déconnexion
-        
-            // if (token) {
-            //     // L'utilisateur est connecté
-            //     console.log("Utilisateur connecté");
-            //     loginButton.classList.remove("loginB");
-            // } else {
-            //     // L'utilisateur n'est pas connecté
-            //     console.log("Utilisateur déconnecté");
-            //     logoutButton.classList.remove("logoutB");
-            // }
-            
+                
                 // Rediriger vers la page d'accueil
                 window.location.href = "index.html";
             } else {

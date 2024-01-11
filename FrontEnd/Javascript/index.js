@@ -6,7 +6,7 @@
 
   const gallery = document.querySelector(".gallery");
   const filters = document.querySelector(".filters");
-  
+
 
 // Fonction pour les Works
 
@@ -30,12 +30,12 @@ displayWorks();
 
 
 function createWorks(work) {
-  const projet = document.createElement("figure"); 
+  const projet = document.createElement("figure");
   projet.setAttribute("class", "figure");
-  projet.setAttribute("id", work.id);  
-  projet.setAttribute("data-category", work.categoryId); 
+  projet.setAttribute("id", work.id);
+  projet.setAttribute("data-category", work.categoryId);
   const image = document.createElement("img");
-  image.src = work.imageUrl; 
+  image.src = work.imageUrl;
   const subtitle = document.createElement("figcaption");
   subtitle.innerText = work.title;
   gallery.appendChild(projet);
@@ -45,14 +45,14 @@ function createWorks(work) {
 
 
 
-// bouton 
+// bouton
 
 async function getCat() {
   const response = await fetch ("http://localhost:5678/api/categories");
   return await response.json();
 }
 
- 
+
 
 async function createBtn() {
   const categories = await getCat();
@@ -89,11 +89,57 @@ async function createBtn() {
 
 createBtn();
 
-// const icon = document.querySelector(".projetModif .fa-pen-square");
-// const title = document.querySelector(".portfolio h2")
-// const loged = window.sessionStorage.loged;
+// Affichage works dans la galerie photo
 
-// if (loged == "false") {
-//   icon.style.display = "none";
-// }
+const workModal = document.querySelector(".workModal");
+
+async function displayWorksModal() {
+  workModal.innerHTML = "";
+  const modal = await genProjet();
+  modal.forEach(work => {
+    const figure = document.createElement("figure")
+    const img = document.createElement("img")
+    const div = document.createElement("div")
+    const trash = document.createElement("i")
+    trash.classList.add("fa-solid","fa-trash-can")
+    trash.id = work.id
+    img.src = work.imageUrl;
+    div.appendChild(trash)
+    figure.appendChild(div)
+    figure.appendChild(img)
+    workModal.appendChild(figure)
+  });
+  // async pour function deleteWork
+  deleteWork();
+}
+displayWorksModal();
+
+// // Supp image modal
+
+function deleteWork() {
+  const workAll = document.querySelectorAll(".fa-trash-can");
+  workAll.forEach(trash => {
+    trash.addEventListener("click", async (e) => {
+      e.preventDefault();  
+  
+      const id = trash.id;
+      const token = window.sessionStorage.getItem('token');
+
+      const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        console.log("Projet supprimé");
+        await displayWorks();
+        await displayWorksModal();
+      } else {
+        console.error("Erreur lors de la suppression du projet");
+      }
+    });
+  });
+}
 

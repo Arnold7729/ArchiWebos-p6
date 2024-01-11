@@ -41,8 +41,7 @@
 			<h2>Mes Projets</h2>
 			<div class="modifier hidden">
 				<i class="fa-solid fa-pen-to-square"></i>
-				<a href="#" class="admin">modifier</a>
-				
+				<a href="#" class="admin">modifier</a>	
 			</div>
 			<div class="filters"></div>
 		</div>
@@ -71,15 +70,48 @@
 		</ul>
 	</nav>
 </footer>
+<!-- modal -->
 <div class="containerModals">
-	<div class="modalWorks"></div>
-	<span><i class="fa-solid fa-xmark"></i></span>
-	<h2>Galerie photo</h2>
-	<div class="workModal"></div>
-	<div class="ligne"></div>
-	<button>Ajouter une photo</button>
+	<div class="modalWorks">
+		<span><i class="fa-solid fa-xmark"></i></span>
+		<h2>Galerie photo</h2>
+		<div class="workModal"></div>
+		<div class="ligne"></div>
+		<button class="ajout" type="submit">Ajouter une photo</button>
+	</div>
+<!-- modal ajout photo -->
+	<div class="modalAddWork">
+		<div class="arrow"><i class="fa-solid fa-arrow-left"></i></div>
+		<span><i class="fa-solid fa-xmark"></i></span>
+		<h2>Ajout photo</h2>
+		<form action="#" method="post" id="add">
+			<div class="addPicture">
+				<i class="far fa-image"></i>
+				<label class="btnAjout" for="file">+ Ajouter photo
+					<input type="file" id="file" accept="image/*" required>
+				</label>
+				<p class="addP">jpg, png : 4mo max</p>
+			</div>
+			<div class="contentInput">
+				<label for="title">Titre</label>
+				<input class="input" type="text" id="title">
+			</div>
+			<div class="contentInput">
+				<label for="category">Catérogie</label>
+				<select id="categories" required>
+					<option value="0" disabled selected hidden>Choisissez une catégorie</option>
+					
+					<option value="1" label="objets">objets</option>
+					<option value="2" label="appartements">appartements</option>
+					<option value="3" label="hotels et restaurants">hotels & restaurants</option>
+				</select>
+			</div>
+			<div class="ligne"></div>
+			<button class="ajout" type="submit">Valider</button>
+		</form>
+	</div>
 </div>
-<script type="text/javascript" src="/FrontEnd/Javascript/index.js" ></script>
-<script src="/FrontEnd/Javascript/modal.js"></script>
+<script type="text/javascript" src="../FrontEnd/Javascript/index.js" ></script>
+<script src="../FrontEnd/Javascript/modal.js"></script>
 </body>
 </html>
