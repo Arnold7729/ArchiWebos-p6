@@ -53,7 +53,7 @@ ajout.addEventListener("click", () =>{
   modalAddWork.style.display = "flex";
 });
 
-faxmark2.addEventListener("click", () => {
+faxmark2.addEventListener("click", () => { 
   modalAddWork.style.display = "none";
   containerModals.style.display = "none";
 });

@@ -133,6 +133,7 @@ function deleteWork() {
       });
 
       if (response.ok) {
+        gallery.innerHTML = "";
         console.log("Projet supprimé");
         await displayWorks();
         await displayWorksModal();
@@ -142,4 +143,92 @@ function deleteWork() {
     });
   });
 }
+
+// Preview Img modal
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const addForm = document.getElementById('add'); 
+
+  addForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(addForm); // Créer un objet FormData
+      formData.append('image', document.getElementById('file').files[0]); // Ajouter l'image du formulaire
+
+      fetch('http://localhost:5678/api/works', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Réponse de l\'API:', data);
+      })
+      .catch(error => {
+          console.error('Erreur lors de l\'envoi du formulaire:', error);
+      });
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const fileInput = document.getElementById('file');
+  const imagePreview = document.getElementById('imagePreview');
+
+  fileInput.addEventListener('change', function (event) {
+      if (fileInput.files && fileInput.files[0]) {
+          // Créer une URL temporaire pour l'image sélectionnée
+          const imageUrl = URL.createObjectURL(fileInput.files[0]);
+          imagePreview.src = imageUrl;
+          imagePreview.style.display = 'block'; // Afficher l'élément img
+      }
+  });
+});
+
+
+// Ajout image le dom via modal
+
+// test 2 
+
+document.addEventListener('DOMContentLoaded', function () {
+  const addForm = document.getElementById('add'); 
+  const imagePreview = document.getElementById('imagePreview'); 
+
+  //Event pour la soumission du formulaire
+
+  addForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const titleInput = document.getElementById('title').value; 
+    const categorySelect = document.getElementById('categories').value; 
+    const fileInput = document.getElementById('file'); 
+
+    if (!fileInput.files.length || categorySelect === "0") {
+      alert('Veuillez sélectionner une image et une catégorie.');
+      return; // Pas de fichier sélectionné ou catégorie non choisie
+    }
+
+    const formData = new FormData();
+    formData.append('title', titleInput);
+    formData.append('category', categorySelect);
+    formData.append('image', fileInput.files[0]);
+
+    fetch('http://localhost:5678/api/works', {
+        method: 'POST',
+        headers: {
+           "Authorization": `Bearer ${token}`
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then((data) => {
+
+        console.log('Réponse de l\'API:', data);
+        gallery.innerHTML = "";
+        displayWorks();
+        displayWorksModal()
+    })
+    .catch(error => {
+        console.error('Erreur lors de l\'envoi du formulaire:', error);
+    });
+  });
+});
 

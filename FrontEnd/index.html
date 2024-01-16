@@ -86,10 +86,10 @@
 		<h2>Ajout photo</h2>
 		<form action="#" method="post" id="add">
 			<div class="addPicture">
-				<i class="far fa-image"></i>
-				<label class="btnAjout" for="file">+ Ajouter photo
+				<img id="imagePreview" src="" alt="Prévisualisation de l'image" style="display: none; position: absolute; max-width: 50%; height: 10%;">
+				<i class="far fa-image"></i> 
+				<label  for="file" class="btnAjout" for="file">+ Ajouter photo</label>
 					<input type="file" id="file" accept="image/*" required>
-				</label>
 				<p class="addP">jpg, png : 4mo max</p>
 			</div>
 			<div class="contentInput">
@@ -100,7 +100,6 @@
 				<label for="category">Catérogie</label>
 				<select id="categories" required>
 					<option value="0" disabled selected hidden>Choisissez une catégorie</option>
-					
 					<option value="1" label="objets">objets</option>
 					<option value="2" label="appartements">appartements</option>
 					<option value="3" label="hotels et restaurants">hotels & restaurants</option>
