@@ -39,7 +39,7 @@ faxmark.addEventListener("click", () => {
     containerModals.style.display = "none";
 });
 
-// Faire disparaitre la modal au click en dehors de celle ci 
+// Faire disparaitre la modal au click en dehors de celle ci + refresh
 
 containerModals.addEventListener("click", (e) =>{
   if (e.target.className == "containerModals") {
@@ -47,7 +47,7 @@ containerModals.addEventListener("click", (e) =>{
   }
 });
 
-// Faire apparaitre la modal 2 pour ajouter des Works ***************
+// Faire apparaitre la modal 2 pour ajouter des Works + refresh ***************
 
 ajout.addEventListener("click", () =>{
   modalAddWork.style.display = "flex";
@@ -56,11 +56,21 @@ ajout.addEventListener("click", () =>{
 faxmark2.addEventListener("click", () => { 
   modalAddWork.style.display = "none";
   containerModals.style.display = "none";
+  inputFile.value = "";
+  inputTitle.value = "";
+  imagePreview.style.display= "none";
+  const categoriesSelect = document.getElementById("categories");
+  categoriesSelect.value = "0";
 });
 
-// Revenir en arriere ( sur la 1ère modal )
+// Revenir en arriere ( sur la 1ère modal ) + refresh 
 
 arrowLeft.addEventListener("click", () => {
   modalAddWork.style.display = "none";
+  inputFile.value = "";
+  inputTitle.value = "";
+  imagePreview.style.display= "none";
+  const categoriesSelect = document.getElementById("categories");
+  categoriesSelect.value = "0";
 })
 

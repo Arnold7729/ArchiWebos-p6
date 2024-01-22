@@ -114,6 +114,7 @@ async function displayWorksModal() {
 }
 displayWorksModal();
 
+
 // // Supp image modal
 
 function deleteWork() {
@@ -145,10 +146,10 @@ function deleteWork() {
 }
 
 // Preview Img modal
-
+ const addForm = document.getElementById('add'); 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const addForm = document.getElementById('add'); 
+    
 
   addForm.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -156,10 +157,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const formData = new FormData(addForm); // Créer un objet FormData
       formData.append('image', document.getElementById('file').files[0]); // Ajouter l'image du formulaire
 
-      fetch('http://localhost:5678/api/works', {
-          method: 'POST',
-          body: formData
-      })
+       fetch('http://localhost:5678/api/works', {
+           method: 'POST',
+           headers: {
+            "Authorization": `Bearer ${token}`
+          },
+           body: formData
+       })
       .then(response => response.json())
       .then(data => {
           console.log('Réponse de l\'API:', data);
@@ -167,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch(error => {
           console.error('Erreur lors de l\'envoi du formulaire:', error);
       });
-  });
+  })
 });
 document.addEventListener('DOMContentLoaded', function () {
   const fileInput = document.getElementById('file');
@@ -189,29 +193,29 @@ document.addEventListener('DOMContentLoaded', function () {
 // test 2 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const addForm = document.getElementById('add'); 
+ 
+  // const addForm = document.getElementById('add'); 
   const imagePreview = document.getElementById('imagePreview'); 
-
   //Event pour la soumission du formulaire
 
-  addForm.addEventListener('submit', function (event) {
+  addForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const titleInput = document.getElementById('title').value; 
     const categorySelect = document.getElementById('categories').value; 
     const fileInput = document.getElementById('file'); 
 
-    if (!fileInput.files.length || categorySelect === "0") {
+    if (!fileInput.files.length || categorySelect === "0") {  // si une condition ou l'autre
       alert('Veuillez sélectionner une image et une catégorie.');
       return; // Pas de fichier sélectionné ou catégorie non choisie
     }
-
+   
     const formData = new FormData();
     formData.append('title', titleInput);
     formData.append('category', categorySelect);
     formData.append('image', fileInput.files[0]);
 
-    fetch('http://localhost:5678/api/works', {
+    await fetch('http://localhost:5678/api/works', {
         method: 'POST',
         headers: {
            "Authorization": `Bearer ${token}`
@@ -223,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log('Réponse de l\'API:', data);
         gallery.innerHTML = "";
+        refreshModal();
         displayWorks();
         displayWorksModal()
     })
@@ -230,5 +235,36 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Erreur lors de l\'envoi du formulaire:', error);
     });
   });
+  function refreshModal(){
+      inputTitle.value = '';
+       inputFile.value = '';
+       imagePreview.style.display= "none";
+       let selectElement = document.getElementById('categories');
+       selectElement.selectedIndex = 0;
+  }
 });
+
+
+
+//test pour bouton validé avec changement de couleur 
+
+const formWork = document.querySelector(".formWork");
+const inputTitle = document.querySelector("#title");
+const inputFile = document.querySelector("#file");
+const categoriesSelect = document.querySelector("#categories");
+const buttonValidForm = document.querySelector(".containerButton button");
+
+function updateButton() {
+  formWork.addEventListener("input", () => {
+    if (inputTitle.value && inputFile.files.length > 0 && categoriesSelect.value !== "0") {
+      buttonValidForm.classList.replace("button-inactive", "button-active");
+    } else {
+      buttonValidForm.classList.replace("button-active", "button-inactive");
+    }
+  });
+}
+
+
+
+updateButton();
 

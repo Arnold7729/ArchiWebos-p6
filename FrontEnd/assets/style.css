@@ -512,7 +512,8 @@ footer p {
 	padding: 20px;
 	margin-top: 20px;
 }
-.modalAddWork .ajout {
+/* test btn  */
+/* .modalAddWork .buttonWork {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -528,8 +529,45 @@ footer p {
 	border-radius: 60px ;
 	cursor: pointer;
 	margin-left: 100px;
-}
+} */
 .modalAddWork label{
  margin-top: 20px;
 }
+/* test */
 
+.button-inactive {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: grey;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	width: 300px;
+	height: 40px;
+	border-radius: 60px ;
+	cursor: pointer;
+	margin-left: 100px;
+
+  }
+  
+  .button-active {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color :  #1D6154;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	width: 300px;
+	height: 40px;
+	border-radius: 60px ;
+	cursor: pointer;
+	margin-left: 100px;
+  }
