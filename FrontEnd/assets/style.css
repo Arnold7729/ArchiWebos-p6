@@ -331,6 +331,7 @@ footer p {
 	height: 100%;
 	border-radius: 20px;
 	flex-direction: column;
+	overflow: auto;
 	top: 0;
 	right: 0;
   }
@@ -339,9 +340,10 @@ footer p {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	background-color: white;
 	width: 40%;
-	height: 90%;
+	height: 70%;
 	border-radius: 10px;
 	position: relative;
   }
@@ -375,7 +377,15 @@ footer p {
 	cursor: pointer;
   }
   .containerModals .ligne {
-	width: 500px;
+	width: 70%;
+	border-bottom: 1px solid black;
+	margin-top: 100px;
+  }
+  .containerModals .ligne2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 	border-bottom: 1px solid black;
 	margin-top: 100px;
   }
@@ -384,8 +394,9 @@ footer p {
 	flex-direction: row;
 	justify-content: left;
 	flex-wrap: wrap;
-	padding-left: 17%;
-	padding-right: 10%;
+	justify-content: center;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .modalWorks img{
 	width: 100%;
@@ -512,28 +523,24 @@ footer p {
 	padding: 20px;
 	margin-top: 20px;
 }
-/* test btn  */
-/* .modalAddWork .buttonWork {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: grey;
-	border: none;
-	margin-top: 40px;
-	margin-bottom: 30px;
-	width: 300px;
-	height: 40px;
-	border-radius: 60px ;
-	cursor: pointer;
-	margin-left: 100px;
-} */
+
 .modalAddWork label{
  margin-top: 20px;
 }
-/* test */
+
+.addPicture #imagePreview {
+	display: none;
+	max-width: 500px;
+	max-height: 220px;
+	object-fit: cover; 
+	position: absolute;
+	left: 2;
+	margin-top: -20px;
+}
+
+/* function button */
+
+
 
 .button-inactive {
 	display: flex;

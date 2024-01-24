@@ -115,7 +115,7 @@ async function displayWorksModal() {
 displayWorksModal();
 
 
-// // Supp image modal
+// Supprimer image modal
 
 function deleteWork() {
   const workAll = document.querySelectorAll(".fa-trash-can");
@@ -146,40 +146,17 @@ function deleteWork() {
 }
 
 // Preview Img modal
- const addForm = document.getElementById('add'); 
+const addForm = document.getElementById('add'); 
 
-document.addEventListener('DOMContentLoaded', function () {
-    
-
-  addForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(addForm); // Créer un objet FormData
-      formData.append('image', document.getElementById('file').files[0]); // Ajouter l'image du formulaire
-
-       fetch('http://localhost:5678/api/works', {
-           method: 'POST',
-           headers: {
-            "Authorization": `Bearer ${token}`
-          },
-           body: formData
-       })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Réponse de l\'API:', data);
-      })
-      .catch(error => {
-          console.error('Erreur lors de l\'envoi du formulaire:', error);
-      });
-  })
-});
 document.addEventListener('DOMContentLoaded', function () {
   const fileInput = document.getElementById('file');
   const imagePreview = document.getElementById('imagePreview');
 
   fileInput.addEventListener('change', function (event) {
       if (fileInput.files && fileInput.files[0]) {
+
           // Créer une URL temporaire pour l'image sélectionnée
+
           const imageUrl = URL.createObjectURL(fileInput.files[0]);
           imagePreview.src = imageUrl;
           imagePreview.style.display = 'block'; // Afficher l'élément img
@@ -190,26 +167,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Ajout image le dom via modal
 
-// test 2 
-
 document.addEventListener('DOMContentLoaded', function () {
- 
-  // const addForm = document.getElementById('add'); 
-  const imagePreview = document.getElementById('imagePreview'); 
-  //Event pour la soumission du formulaire
+  const addForm = document.getElementById('add'); 
+
+  // Fonction pour vérifier si les conditions sont remplies
+  function conditionOk() {
+    const titleInput = document.getElementById('title').value; 
+    const categorySelect = document.getElementById('categories').value; 
+    const fileInput = document.getElementById('file'); 
+    return titleInput && fileInput.files.length > 0 && categorySelect !== "0";
+  }
+
+  // Gestionnaire d'événements pour la soumission du formulaire
 
   addForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
+    if (!conditionOk()) {
+      alert("Veuillez remplir tous les champs requis.");
+      return; 
+    }
+
     const titleInput = document.getElementById('title').value; 
     const categorySelect = document.getElementById('categories').value; 
     const fileInput = document.getElementById('file'); 
-
-    if (!fileInput.files.length || categorySelect === "0") {  // si une condition ou l'autre
-      alert('Veuillez sélectionner une image et une catégorie.');
-      return; // Pas de fichier sélectionné ou catégorie non choisie
-    }
-   
+    
     const formData = new FormData();
     formData.append('title', titleInput);
     formData.append('category', categorySelect);
@@ -224,7 +206,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(response => response.json())
     .then((data) => {
-
         console.log('Réponse de l\'API:', data);
         gallery.innerHTML = "";
         refreshModal();
@@ -235,15 +216,14 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Erreur lors de l\'envoi du formulaire:', error);
     });
   });
+
   function refreshModal(){
-      inputTitle.value = '';
-       inputFile.value = '';
-       imagePreview.style.display= "none";
-       let selectElement = document.getElementById('categories');
-       selectElement.selectedIndex = 0;
+    document.getElementById('title').value = '';
+    document.getElementById('file').value = '';
+    document.getElementById('imagePreview').style.display = "none";
+    document.getElementById('categories').selectedIndex = 0;
   }
 });
-
 
 
 //test pour bouton validé avec changement de couleur 
@@ -263,8 +243,38 @@ function updateButton() {
     }
   });
 }
-
-
-
 updateButton();
+
+// Alerte si condition non rempli 2ème modal
+
+// addForm.addEventListener('submit', async function (event) {
+//   event.preventDefault();
+
+//   const titleInput = document.getElementById('title').value;
+//   const categorySelect = document.getElementById('categories').value;
+//   const fileInput = document.getElementById('file');
+//   let alertMessage = '';
+
+//   // Vérifier si le titre est rempli
+//   if (!titleInput) {
+//     alertMessage += 'Veuillez entrer un titre. ';
+//   }
+
+//   // Vérifier si une catégorie est sélectionnée
+//   if (categorySelect === "0") {
+//     alertMessage += 'Veuillez choisir une catégorie. ';
+//   }
+
+//   // Vérifier si une image est sélectionnée
+//   if (!fileInput.files.length) {
+//     alertMessage += 'Veuillez sélectionner une image. ';
+//   }
+
+//   // Afficher l'alerte si nécessaire et sortir de la fonction
+//   if (alertMessage) {
+//     alert(alertMessage);
+//     return;
+//   }
+// });
+
 

@@ -26,11 +26,11 @@ if (token) {
   });
 }
 
-
 // Faire apparaitre la modal en cliquant sur "modifier"
 
 admin.addEventListener("click", () => {
     containerModals.style.display = "flex";
+    modalAddWork.style.display="none";
 });
 
 // Faire disparaitre la modal à l'aide de la croix
@@ -39,19 +39,26 @@ faxmark.addEventListener("click", () => {
     containerModals.style.display = "none";
 });
 
-// Faire disparaitre la modal au click en dehors de celle ci + refresh
+// Faire disparaitre la modal au click en dehors de celle ci 
 
 containerModals.addEventListener("click", (e) =>{
   if (e.target.className == "containerModals") {
     containerModals.style.display = "none";
+    inputFile.value = "";
+    inputTitle.value = "";
+    imagePreview.style.display= "none";
+    const categoriesSelect = document.getElementById("categories");
+    categoriesSelect.value = "0";
   }
 });
 
-// Faire apparaitre la modal 2 pour ajouter des Works + refresh ***************
+// Faire apparaitre la modal 2 pour ajouter des Works
 
 ajout.addEventListener("click", () =>{
   modalAddWork.style.display = "flex";
 });
+
+// Faire disparaitre la modal + refresh 
 
 faxmark2.addEventListener("click", () => { 
   modalAddWork.style.display = "none";
