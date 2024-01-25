@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Sélectionnez votre formulaire et les éléments nécessaires
+    
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');

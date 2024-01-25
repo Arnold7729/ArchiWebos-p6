@@ -265,11 +265,6 @@ updateButton();
 //     alertMessage += 'Veuillez choisir une catégorie. ';
 //   }
 
-//   // Vérifier si une image est sélectionnée
-//   if (!fileInput.files.length) {
-//     alertMessage += 'Veuillez sélectionner une image. ';
-//   }
-
 //   // Afficher l'alerte si nécessaire et sortir de la fonction
 //   if (alertMessage) {
 //     alert(alertMessage);
