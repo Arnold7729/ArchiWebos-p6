@@ -208,6 +208,36 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/******* Black Headbang ******/
+
+.blackHeadband{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	background-color: black;
+	Width:100%;
+	Height:59px;
+}
+.blackHeadband .iconeEdition{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+ 	color: white;
+	margin-right: 10px;
+}
+.blackHeadband span {
+	display: flex;
+	align-items: center;
+	color: white;
+}
+.blackHeadband .banniere{
+	display:flex;
+	flex-direction: row;
+	position: absolute;
+	left: 50%;	
+}
+
 
 /*******************************Login********************************/
 
@@ -415,9 +445,15 @@ footer p {
 	display: flex;
 	justify-content: center;
 	position: fixed;
-	margin-left: 70px;
+	margin-left: 60px;
 	margin-top: 5px;
 	cursor: pointer;
+	color: white;
+	background-color: black;
+	padding: 7px;
+}
+.fa-trash-can{
+	scale: 0.7;
 }
   
 .admin {
@@ -578,3 +614,4 @@ footer p {
 	cursor: pointer;
 	margin-left: 100px;
   }
+

@@ -24,7 +24,7 @@
       createWorks(work);
     });
   }
-displayWorks();
+  displayWorks();
 
 
 
@@ -244,32 +244,4 @@ function updateButton() {
   });
 }
 updateButton();
-
-// Alerte si condition non rempli 2ème modal
-
-// addForm.addEventListener('submit', async function (event) {
-//   event.preventDefault();
-
-//   const titleInput = document.getElementById('title').value;
-//   const categorySelect = document.getElementById('categories').value;
-//   const fileInput = document.getElementById('file');
-//   let alertMessage = '';
-
-//   // Vérifier si le titre est rempli
-//   if (!titleInput) {
-//     alertMessage += 'Veuillez entrer un titre. ';
-//   }
-
-//   // Vérifier si une catégorie est sélectionnée
-//   if (categorySelect === "0") {
-//     alertMessage += 'Veuillez choisir une catégorie. ';
-//   }
-
-//   // Afficher l'alerte si nécessaire et sortir de la fonction
-//   if (alertMessage) {
-//     alert(alertMessage);
-//     return;
-//   }
-// });
-
 

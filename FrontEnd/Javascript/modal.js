@@ -14,6 +14,7 @@ const token = window.sessionStorage.getItem('token');
 const ajout = document.querySelector(".ajout");
 const modalAddWork = document.querySelector(".modalAddWork");
 const arrowLeft = document.querySelector(".modalAddWork .fa-arrow-left");
+const blackHeadband = document.querySelector(".blackHeadband");
 
 
 // Si connecté (en vérifiant le token)
@@ -21,9 +22,14 @@ if (token) {
   admin.textContent = "modifier";
   logout.textContent = "logout";
   btnModif.style.display = "flex";
+  blackHeadband.style.display = "flex";
+  filters.style.display="none";
   logout.addEventListener("click", () => {
   window.sessionStorage.removeItem('token'); // Supprime le token pour déconnecter
   });
+}
+if (!token){
+  blackHeadband.style.display="none";
 }
 
 // Faire apparaitre la modal en cliquant sur "modifier"
