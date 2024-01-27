@@ -1,6 +1,6 @@
 
 
-  //Variable
+// Variable
 
 
 
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//test pour bouton validé avec changement de couleur 
+//Bouton validé avec changement de couleur 
 
 const formWork = document.querySelector(".formWork");
 const inputTitle = document.querySelector("#title");
